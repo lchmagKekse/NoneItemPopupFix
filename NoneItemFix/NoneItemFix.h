@@ -14,11 +14,15 @@ struct GetUnseenContainerDropsParams {
 	TArray<int32_t> ReturnValue;
 };
 
-class NoneItemFix: public BakkesMod::Plugin::BakkesModPlugin {
+class NoneItemFix: public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin::PluginSettingsWindow {
 
 	virtual void onLoad();
 	virtual void onUnload();
 
 	void GetUnseenContainerDropsHook(void* params);
+
+	void RenderSettings() override;
+	std::string GetPluginName() override;
+	void SetImGuiContext(uintptr_t ctx) override;
 };
 
